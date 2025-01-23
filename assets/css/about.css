@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display:block;} /* HTML5 for older browsers */
+body{line-height:1;font-size:14px;font-family:'helvetica', 'SDGothic', AppleGothic, Arial, sans-serif;}
+.win body {line-height:1.2;}
+ol, ul{list-style:none;}
+blockquote, q{quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+img{max-width:100%;vertical-align:top;}
+a{color:inherit; text-decoration:none;}
+::-moz-selection {background-color:#000000;color:#e5e5e5}
+::selection {background-color:#000000;color:#e5e5e5}
+::-moz-selection {background-color:#000000;color:#e5e5e5}
+
+.about-page{width:100%; margin:0 auto}
+.about-section.bg-line:before{right:-185vw;left:-185vw}
+.about-section:not(.section-bg){position:relative;z-index:1}
+
+.section-vision-main.fixed .bg-parallax{position:fixed}
+.img-src{ width:100%; height: auto;}
+
+.section-story{position:relative;height:auto;background-color:#fff}
+.section-story .sticky-wrap{height:4490px}
+.section-story .sticky-inner{overflow:hidden;position:-webkit-sticky;position:sticky;top:0;height:100vh}
+.section-story .scroll-wrap .scroll-list{display:-webkit-box;display:-ms-flexbox;display:flex;height:100vh;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-negative:0;flex-shrink:0}
+.section-story .sec-cont-outer{display:-webkit-box;display:-ms-flexbox;display:flex;height:100vh;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.section-story .sec-cont-outer .scroll-wrap{display:-webkit-box;display:-ms-flexbox;display:flex}
+.section-story .scroll-wrap .scroll-list{display:-webkit-box;display:-ms-flexbox;display:flex;height:100vh;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-negative:0;flex-shrink:0}
+.section-story .scroll-wrap .img-area{height:100%}
+.section-story .scroll-wrap .img-area:after{content:'';display:block;clear:both}
+.section-story .scroll-wrap img{float:left;height:100%}
+
+.card-container {display:flex;justify-content:center;align-items: center;width: 100%;gap: 6%; /* 카드 간의 간격 */position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%); /* 화면 중앙에 카드 배치 */}
+.card {width: 14vw;  /* 화면 너비의 22% */height: 16.1vw; /* 화면 너비의 30% */perspective: 1000px; /* 3D 효과 */display: flex;justify-content: center;align-items: center;}
+.card-inner {width: 100%;height: 100%;transform-style: preserve-3d;transition: transform 0.6s;}
+.card:hover .card-inner {transform: rotateY(180deg); /* 카드가 뒤집히는 효과 */}
+.card-face {position: absolute;width: 100%;height: 100%;backface-visibility: hidden;border-radius: 10px;}
+.card-front {background-size: cover;background-position: center;background-image: url('./assets/images/about/skillbox01.png');}
+.card-back {background-size: cover;background-position: center;background-image: url('./assets/images/about/skillbox01.png');transform: rotateY(180deg); /* 카드 뒷면을 뒤집어서 보여줌 */}
+
+/* 이미지 링크 컨테이너 */
+.image-container {position: absolute;width: 85vh;display: flex;flex-direction: column;gap: 50px;align-items: center;justify-content: center;top: 18%;}
+
+/* 개별 이미지 링크 */
+.image-link {position: relative;display: inline-block;}
+
+/* 기본 이미지 스타일 */
+.image-link img {transition: opacity 0.3s ease-in-out;}
+
+/* 디밍 효과 이미지 */
+.image-link .dimm {position: absolute;top: 0;left: 0;opacity: 0;transition: opacity 0.3s ease-in-out;}
+
+/* 마우스 hover 시 디밍 이미지 나타나기 */
+.image-link:hover .dimm {opacity: 1;}
+
+
+
+
+

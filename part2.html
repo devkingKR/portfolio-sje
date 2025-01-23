@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body id="nav" style="margin: 0;">
+        <!-- App Overview -->
+        <div id="step1">
+            <img style="width: 100%;" src="images/2_1_1.png">
+        </div>
+
+        <div id="step2" style="width: 100%;height: calc(48000% / 509); z-index: 10;">
+            <div class="bg" style="z-index: 1;">
+                <img style="width: 100%" src="images/2_1_2.png">
+            </div>
+            <div style="width: calc(300% / 16); position: absolute; top: calc(100vw * 5 / 16); left: calc(3100% / 48 - 1px);">
+                <!-- 스크롤 내용 -->
+                <img style="width: 100%;" src="images/2_1_3.png">
+            </div>
+        </div>
+
+        <div style="margin-top: calc(-300% / 16); width: 100%;height: calc(48000% / 509); z-index: 9;">
+            <div style="width: calc(300% / 16); position: absolute; top: calc(19000% / 509); left: calc(3100% / 48 - 1px);">
+                <!-- 스크롤 내용 -->
+                <!-- <img style="width: 100%;" src="images/2_1_3.png"> -->
+            </div>
+        </div>
+
+        <div>
+            <img style="width: 100%;" src="images/2_2_1.png">
+        </div>
+        <div>
+            <img style="width: 100%;" src="images/2_2_2.png">
+        </div>
+        <div>
+            <img style="width: 100%;" src="images/2_2_3.png">
+        </div>
+        <div>
+            <img style="width: 100%;" src="images/2_2_4.png">
+        </div>
+        <!-- 
+                <div style="margin-top: calc(100vw * 5 / 16); z-index: 1;">
+                    
+                </div> -->
+    </body>
+    <script>
+        window.onscroll = function() {
+            var width = window.innerWidth;
+            var top = document.querySelector('body').scrollTop;
+            var gap = width * 5 / 16;
+
+            if (width * 13 / 16 <= top) {
+                document.getElementById('step2').style.position = 'fixed';
+                document.getElementById('step2').style.top = -gap;
+            } else {
+                document.getElementById('step2').style.position = 'relative';
+                document.getElementById('step2').style.top = 0;
+            }
+
+            console.log(width + " :: " + top);
+        };
+    </script>
+</html>

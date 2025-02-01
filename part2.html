@@ -8,11 +8,11 @@
             <img style="width: 100%;" src="images/2_1_1.png">
         </div>
 
-        <div id="step2" style="width: 100%;height: calc(48000% / 509); z-index: 10;">
-            <div class="bg" style="z-index: 1;">
+        <div style="width: 100%;height: calc(48000% / 509); z-index: 10;">
+            <div id="step2" class="bg" style="z-index: 1;">
                 <img style="width: 100%" src="images/2_1_2.png">
             </div>
-            <div style="width: calc(300% / 16); position: absolute; top: calc(100vw * 5 / 16); left: calc(3100% / 48 - 1px);">
+            <div id="scroll1" style="width: calc(300% / 16); top: calc(-100vw* 191 / 291); left: calc(3100% / 48 - 1px);">
                 <!-- 스크롤 내용 -->
                 <img style="width: 100%;" src="images/2_1_3.png">
             </div>
@@ -51,9 +51,11 @@
             if (width * 13 / 16 <= top) {
                 document.getElementById('step2').style.position = 'fixed';
                 document.getElementById('step2').style.top = -gap;
+                document.getElementById('scroll1').style.top = 'calc(100vw * 191 / 488)';
             } else {
                 document.getElementById('step2').style.position = 'relative';
                 document.getElementById('step2').style.top = 0;
+                document.getElementById('scroll1').style.top = 'calc(-100vw* 191 / 291)';
             }
 
             console.log(width + " :: " + top);

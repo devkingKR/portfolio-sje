@@ -42,7 +42,7 @@ a{color:inherit; text-decoration:none;}
 .card-back {background-size: cover;background-position: center;background-image: url('./assets/images/about/skillbox01.png');transform: rotateY(180deg); /* 카드 뒷면을 뒤집어서 보여줌 */}
 
 /* 이미지 링크 컨테이너 */
-.image-container {position: absolute;width: 85vh;display: flex;flex-direction: column;gap: 50px;align-items: center;justify-content: center;top: 18%; padding-bottom: 50px;}
+.image-container {position: absolute;/*width: 85vh;*/display: flex;flex-direction: column;gap: 50px;align-items: center;justify-content: center;top: 18%; padding-bottom: 50px;}
 
 /* 개별 이미지 링크 */
 .image-link {position: relative;display: inline-block;}

@@ -22,6 +22,11 @@
             margin: 0;
             padding: 0;
         }
+
+        /* swiper 화살표 컬러*/
+        .swiper-button-next, .swiper-button-prev{
+            --swiper-theme-color:#929398 ;
+        }
     </style>
 </head>
 <body>
@@ -40,6 +45,7 @@
             <div class="swiper-slide"><img src="./images/new/part 4/11. Part4_1_5.png" alt=""></div>
             <div class="swiper-slide"><img src="./images/new/part 4/11. Part4_1_6.png" alt=""></div>
             <div class="swiper-slide"><img src="./images/new/part 4/11. Part4_1_7.png" alt=""></div>
+            <div class="swiper-slide"><img src="./images/new/part 4/11. Part4_1_7.png" alt=""></div><!--더미이미지-->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -51,6 +57,7 @@
             <div class="swiper-slide"><img src="./images/new/part 4/12. Part4_1_2.png" alt=""></div>
             <div class="swiper-slide"><img src="./images/new/part 4/12. Part4_1_3.png" alt=""></div>
             <div class="swiper-slide"><img src="./images/new/part 4/12. Part4_1_4.png" alt=""></div>
+            <div class="swiper-slide"><img src="./images/new/part 4/12. Part4_1_4.png" alt=""></div><!--더미이미지-->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -92,7 +99,7 @@
             
         })
 
-        var swiper = new Swiper(".mobile", {
+        var mobileSwiper = new Swiper(".mobile", {
             direction: "horizontal",
             slidesPerView: 1,
             mousewheel: true,
@@ -106,7 +113,7 @@
             },
         });
 
-        var swiper = new Swiper(".website", {
+        var websiteSwiper = new Swiper(".website", {
             direction: "horizontal",
             slidesPerView: 1,
             mousewheel: true,
@@ -120,7 +127,7 @@
             },
         });
 
-        var swiper = new Swiper(".editorial", {
+        var editorialSwiper = new Swiper(".editorial", {
             direction: "horizontal",
             slidesPerView: 1,
             mousewheel: true,
@@ -132,6 +139,52 @@
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
+        });
+
+        $('.mobile, .website, .editorial').on('wheel', function(e) {
+            var delta = e.originalEvent.deltaY;
+            if ($(this).hasClass('mobile') && delta > 0 && mobileSwiper.isEnd) {
+                $('.mySwiper').hide();
+                $('.website').show();
+                $('.nav-bar a').removeClass('active').eq(1).addClass('active');
+                websiteSwiper.slideTo(0);
+                websiteSwiper.update();
+                e.preventDefault();
+            }
+            else if ($(this).hasClass('website')) {
+                if (delta > 0 && websiteSwiper.isEnd) {
+                    $('.mySwiper').hide();
+                    $('.editorial').show();
+                    $('.nav-bar a').removeClass('active').eq(2).addClass('active');
+                    editorialSwiper.slideTo(0);
+                    e.preventDefault();
+                } else if (delta < 0 && websiteSwiper.isBeginning) {
+                    $('.mySwiper').hide();
+                    $('.mobile').show();
+                    $('.nav-bar a').removeClass('active').eq(0).addClass('active');
+                    mobileSwiper.slideTo(mobileSwiper.slides.length - 1);
+                    mobileSwiper.update();
+                    document.querySelector("body > div.swiper.mySwiper.mobile.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-prev").click();
+                    e.preventDefault();
+                } else if (delta > 0 && websiteSwiper.activeIndex === 0){
+                    document.querySelector("body > div.swiper.mySwiper.website.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-next").click();
+                    e.preventDefault();
+                }
+            }
+            else if ($(this).hasClass('editorial')){
+                if (delta < 0 && editorialSwiper.isBeginning) {
+                    $('.mySwiper').hide();
+                    $('.website').show();
+                    $('.nav-bar a').removeClass('active').eq(1).addClass('active');
+                    websiteSwiper.slideTo(websiteSwiper.slides.length - 1);
+                    websiteSwiper.update();
+                    document.querySelector("body > div.swiper.mySwiper.website.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-prev").click();    
+                    e.preventDefault();
+                } else if (delta > 0 && editorialSwiper.activeIndex === 0){
+                    document.querySelector("body > div.swiper.mySwiper.editorial.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-next").click();
+                    e.preventDefault();
+                }
+            }
         });
     </script>
 </body>

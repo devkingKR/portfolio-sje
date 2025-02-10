@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="google" content="notranslate">
+        <title>파트2</title>
+    </head>
+    <body id="nav" style="margin: 0;">
+        <!-- App Overview -->
+        <div id="step1">
+            <img style="width: 100%;" src="images/2_1_1.png">
+        </div>
+
+        <div style="width: 100%;height: calc(48000% / 509); z-index: 10;">
+            <div id="step2" class="bg" style="z-index: 1; width: 100%;">
+                <img style="width: 100%" src="images/2_1_2.png">
+            </div>
+            <div id="scroll1" style="width: calc(300% / 16); top: calc(-100vw* 191 / 291); left: calc(3100% / 48 - 1px);">
+                <!-- 스크롤 내용 -->
+                <!-- <img style="width: 100%;" src="images/2_1_3.png"> -->
+            </div>
+        </div>
+
+        <div style="margin-top: calc(-300% / 16); width: 100%;height: calc(48000% / 509); z-index: 9;">
+            <div style="width: calc(300% / 16); position: absolute; top: calc(19000% / 509); left: calc(3100% / 48 - 1px);">
+                <!-- 스크롤 내용 -->
+                <!-- <img style="width: 100%;" src="images/2_1_3.png"> -->
+            </div>
+        </div>
+
+        <div>
+            <img style="width: 100%;z-index: 9;" src="images/2_2_1.png">
+        </div>
+        <div>
+            <img style="width: 100%;z-index: 9;" src="images/2_2_2.png">
+        </div>
+        <div>
+            <img style="width: 100%;z-index: 9;" src="images/2_2_3.png">
+        </div>
+        <div>
+            <img style="width: 100%;z-index: 9;" src="images/2_2_4.png">
+        </div>
+        <!-- 
+                <div style="margin-top: calc(100vw * 5 / 16); z-index: 1;">
+                    
+                </div> -->
+        <!-- 플로팅 네비게이션 -->
+        <nav class="floating-menu">
+            <a href="index.html">Home</a>
+            <a href="part1.html">Part 1</a>
+            <a href="part2.html" class="active">Part 2</a>
+            <a href="part3.html">Part 3</a>
+            <a href="part4.html">Part 4</a>
+        </nav>
+    </body>
+    <script>
+        window.onscroll = function() {
+            var width = window.innerWidth;
+            var top = document.querySelector('body').scrollTop;
+            var gap = width * 5 / 16;
+
+            if (width * 13 / 16 <= top) {
+                document.getElementById('step2').style.position = 'fixed';
+                document.getElementById('step2').style.top = -gap;
+                document.getElementById('scroll1').style.top = 'calc(100vw * 191 / 488)';
+            } else {
+                document.getElementById('step2').style.position = 'relative';
+                document.getElementById('step2').style.top = 0;
+                document.getElementById('scroll1').style.top = 'calc(-100vw* 191 / 291)';
+            }
+
+            console.log(width + " :: " + top);
+        };
+    </script>
+</html>

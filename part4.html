@@ -71,6 +71,7 @@
             <div class="swiper-slide"><img src="./images/new/part 4/13. Part4_1_4.png" alt=""></div>
             <div class="swiper-slide"><img src="./images/new/part 4/13. Part4_1_5.png" alt=""></div>
             <div class="swiper-slide"><img src="./images/new/part 4/13. Part4_1_6.png" alt=""></div>
+            <div class="swiper-slide"><img src="./images/new/part 4/13. Part4_1_6.png" alt=""></div><!--더미이미지-->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -141,15 +142,26 @@
             },
         });
 
+        var mobileDelta = 0;
         $('.mobile, .website, .editorial').on('wheel', function(e) {
             var delta = e.originalEvent.deltaY;
-            if ($(this).hasClass('mobile') && delta > 0 && mobileSwiper.isEnd) {
-                $('.mySwiper').hide();
-                $('.website').show();
-                $('.nav-bar a').removeClass('active').eq(1).addClass('active');
-                websiteSwiper.slideTo(0);
-                websiteSwiper.update();
-                e.preventDefault();
+            if ($(this).hasClass('mobile')) {
+                if (delta > 0 && mobileSwiper.isEnd) {
+                    $('.mySwiper').hide();
+                    $('.website').show();
+                    $('.nav-bar a').removeClass('active').eq(1).addClass('active');
+                    websiteSwiper.slideTo(0);
+                    websiteSwiper.update();
+                    e.preventDefault();
+                } else if (delta > 0 && mobileSwiper.isBeginning) {
+                    mobileDelta = mobileDelta + delta;
+                    if (mobileDelta > 100 ) {
+                        document.querySelector("body > div.swiper.mySwiper.mobile.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-next").click();
+                        e.preventDefault();
+                    }
+                } else if (delta > 0 && !mobileSwiper.isBeginning){
+                    mobileDelta = 0;
+                }
             }
             else if ($(this).hasClass('website')) {
                 if (delta > 0 && websiteSwiper.isEnd) {
@@ -179,6 +191,13 @@
                     websiteSwiper.slideTo(websiteSwiper.slides.length - 1);
                     websiteSwiper.update();
                     document.querySelector("body > div.swiper.mySwiper.website.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-prev").click();    
+                    e.preventDefault();
+                } else if (delta > 0 && editorialSwiper.isEnd) {
+                    $('.mySwiper').hide();
+                    $('.mobile').show();
+                    $('.nav-bar a').removeClass('active').eq(0).addClass('active');
+                    mobileSwiper.slideTo(0);
+                    mobileSwiper.update();
                     e.preventDefault();
                 } else if (delta > 0 && editorialSwiper.activeIndex === 0){
                     document.querySelector("body > div.swiper.mySwiper.editorial.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-next").click();

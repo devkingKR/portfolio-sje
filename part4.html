@@ -210,11 +210,7 @@
                     }
                 } else if (delta > 0 && editorialSwiper.isEnd) {
                     $('.mySwiper').hide();
-                    $('.mobile').show();
-                    $('.nav-bar a').removeClass('active').eq(0).addClass('active');
-                    mobileSwiper.slideTo(0);
-                    mobileSwiper.update();
-                    e.preventDefault();
+                    location.href = "index.html";
                 } else if (delta > 0 && editorialSwiper.activeIndex === 0){
                     document.querySelector("body > div.swiper.mySwiper.editorial.swiper-initialized.swiper-horizontal.swiper-backface-hidden > div.swiper-button-next").click();
                     e.preventDefault();
